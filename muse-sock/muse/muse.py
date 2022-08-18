@@ -29,7 +29,7 @@ class Muse(object):
         elif backend in ['gatt', 'bgapi']:
             self.backend = backend
         else:
-            raise(ValueError('Backend must be auto, gatt or bgapi'))
+            raise ValueError('Backend must be auto, gatt or bgapi')
 
     def connect(self, interface=None):
         """Connect to the device

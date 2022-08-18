@@ -123,7 +123,7 @@ class FFTServer():
             self._stream = resolve_byprop('type', incoming, timeout=2)
 
             if len(self._stream) == 0:
-                raise(RuntimeError('Can\'t find {} stream.'.format(incoming)))
+                raise RuntimeError
             print('Aquiring data from the \'{}\' stream...'.format(incoming))
 
             self._inlet = StreamInlet(self._stream[0],

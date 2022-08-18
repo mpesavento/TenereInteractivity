@@ -101,7 +101,7 @@ def get_filter_coeff(fs, N, l_freq=None, h_freq=None, method='butter'):
     if method == 'butter':
         b, a = signal.butter(N, Wn, btype=btype)
     else:
-        raise(ValueError('Method ''{}'' not supported.'.format(method)))
+        raise ValueError('Method ''{}'' not supported.'.format(method))
 
     return b, a
 

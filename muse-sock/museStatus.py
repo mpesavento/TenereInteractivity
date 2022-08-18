@@ -15,13 +15,13 @@ import os
 mode = 0
 try:
     server = liblo.Server(1234)
-except liblo.ServerError, err:
-    print str(err)
+except liblo.ServerError as err:
+    print(str(err))
     sys.exit()
 
 def musesock_callback(path, args):
     i,f = args
-    #print "received message '%s' with arguments '%d' and '%f'" % (path, i, f)
+    #print("received message '%s' with arguments '%d' and '%f'" % (path, i, f))
     if (i==0):
         blinkt.set_pixel(0, 0, 0, 255)
     elif (i==1):
@@ -31,14 +31,14 @@ def musesock_callback(path, args):
     blinkt.show()
 
 def reconnect_callback(path, args):
-    #print "received message '%s' " % (path)
+    #print("received message '%s' " % (path))
     blinkt.set_pixel(0, 1.0,1.0, 1.0)
     blinkt.show()
 
 def hsi_callback(path, args):
     global mode
     h0,h1,h2,h3 = args
-    #print "hsiVals %f %f %f %f'" % (h0,h1,h2,h3)
+    #print("hsiVals %f %f %f %f'" % (h0,h1,h2,h3)
     if (h0<=254):
        blinkt.set_pixel(0, 0, int(255-h0), 0)
     else:
@@ -81,13 +81,13 @@ def hsi_callback(path, args):
 def mode_callback(path, args):
     global mode
     i = args
-    print "switching display mode to %d'" % (i)
+    print("switching display mode to %d'" % (i))
     mode = i
 
 def fallback(path, args, types, src):
-    print "got unknown message '%s' from '%s'" % (path, src.url)
+    print("got unknown message '%s' from '%s'" % (path, src.url))
     for a, t in zip(args, types):
-        print "argument of type '%s': %s" % (t, a)
+        print("argument of type '%s': %s" % (t, a))
 
 # register method taking an int and a float
 server.add_method("/muse-sock", "if", musesock_callback)
