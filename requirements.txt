@@ -1,0 +1,5 @@
+numpy
+scipy
+pyliblo3
+python-osc
+pylsl
